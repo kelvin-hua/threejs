@@ -7,6 +7,10 @@ const loadingManager = new THREE.LoadingManager();
 loadingManager.onStart = () => {
     console.log('onStart');
 }
+
+// .jpg = lossy compression but lighter
+// .png - lossless compression but heavier
+// can use TinyPNG to compress jpg and png, Basis
 const textureLoader = new THREE.TextureLoader(loadingManager);
 const checkerTexture = textureLoader.load('/textures/checkerboard-8x8.png');
 const minecraftTexture = textureLoader.load('/textures/minecraft.png');
@@ -34,7 +38,7 @@ const roughnessTexture = textureLoader.load('/textures/door/roughness.jpg');
 // colorTexture.center.x = 0.5;
 // colorTexture.center.y = 0.5;
 
-// Minmapping 
+// Minmapping - storing multiple version sizes to optimize performance
 colorTexture.minFilter = THREE.NearestFilter;
 checkerTexture.minFilter = THREE.NearestFilter;
 
